@@ -3,6 +3,7 @@ import { Injectable } from '@nestjs/common';
 @Injectable()
 export class SongsService {
     //local db an array
+    //TODO add connection to db
     private readonly songs = [];
 
     create(song) {
@@ -12,6 +13,7 @@ export class SongsService {
 
     findAll() {
         //TODO get the songs from the db
+        // throw new Error('this is a created error');
         return this.songs;
     }
 }
