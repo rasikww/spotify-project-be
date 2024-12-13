@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 
 @Injectable()
-export class SongsService {
+export class SongService {
     //local db an array
     //TODO add connection to db
     private readonly songs = [];
@@ -14,6 +14,7 @@ export class SongsService {
     findAll() {
         //TODO get the songs from the db
         // throw new Error('this is a created error');
+        this.songs.forEach((val) => console.log(val));
         return this.songs;
     }
 }

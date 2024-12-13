@@ -1,28 +1,28 @@
+import { SongController } from './song/song.controller';
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { SongsModule } from './songs/songs.module';
 import { LoggerMiddleware } from './common/middleware/logger/logger.middleware';
-import { SongsController } from './songs/songs.controller';
+import { SongModule } from './song/song.module';
 
 @Module({
-    imports: [SongsModule],
+    imports: [SongModule],
     controllers: [AppController],
     providers: [AppService],
 })
 export class AppModule implements NestModule {
     configure(consumer: MiddlewareConsumer) {
-        //consumer.apply(LoggerMiddleware).forRoutes('songs');
+        //consumer.apply(LoggerMiddleware).forRoutes('song');
         // consumer.apply(LoggerMiddleware).forRoutes(
         //     {
-        //         path: 'songs',
+        //         path: 'song',
         //         method: RequestMethod.GET,
         //     },
         //     {
-        //         path: 'songs',
+        //         path: 'song',
         //         method: RequestMethod.POST,
         //     },
         // );
-        consumer.apply(LoggerMiddleware).forRoutes(SongsController);
+        consumer.apply(LoggerMiddleware).forRoutes(SongController);
     }
 }

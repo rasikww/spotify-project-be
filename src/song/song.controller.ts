@@ -9,16 +9,16 @@ import {
     Post,
     Put,
 } from '@nestjs/common';
-import { SongsService } from './songs.service';
+import { SongService } from './song.service';
 import { SongDTO } from './dto/song.dto';
 
-@Controller('songs')
-export class SongsController {
-    constructor(private songsService: SongsService) {}
+@Controller('song')
+export class SongController {
+    constructor(private songService: SongService) {}
     @Get()
     findAll() {
         try {
-            return this.songsService.findAll();
+            return this.songService.findAll();
         } catch (error) {
             throw new HttpException(
                 'Server Error',
@@ -37,7 +37,7 @@ export class SongsController {
 
     @Post()
     create(@Body() SongDTO: SongDTO) {
-        return this.songsService.create(SongDTO);
+        return this.songService.create(SongDTO);
     }
 
     @Put(':id')

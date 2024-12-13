@@ -4,6 +4,7 @@ import {
     IsInt,
     IsNotEmpty,
     IsString,
+    Min,
 } from 'class-validator';
 
 export class SongDTO {
@@ -18,9 +19,10 @@ export class SongDTO {
 
     @IsNotEmpty()
     @IsDateString()
-    readonly releasedDate: Date;
+    readonly releaseDate: Date;
 
     @IsNotEmpty()
     @IsInt()
+    @Min(0)
     readonly duration: number;
 }

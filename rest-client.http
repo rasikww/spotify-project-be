@@ -1,22 +1,22 @@
-### Send FETCH SONGS REQUEST
-GET http://localhost:3000/songs
+### Send FETCH SONG REQUEST
+GET http://localhost:3000/song
 
-### Find SONGS REQUEST
-GET http://localhost:3000/songs/1
+### Find SONG REQUEST
+GET http://localhost:3000/song/1
 
-### Create New SONGS REQUEST
-POST http://localhost:3000/songs
+### Create New SONG REQUEST
+POST http://localhost:3000/song
 Content-Type: application/json
 
 {
     "title": "APT",
     "artists": ["Rose", "Bruno Mars"],
-    "releasedDate": "2024-10-18",
+    "releaseDate": "2024-10-18",
     "duration": 169
 }
 
-### Update SONGS REQUEST
-PUT http://localhost:3000/songs/1
+### Update SONG REQUEST
+PUT http://localhost:3000/song/1
 
-### Delete SONGS REQUEST
-DELETE http://localhost:3000/songs/1
+### Delete SONG REQUEST
+DELETE http://localhost:3000/song/1
