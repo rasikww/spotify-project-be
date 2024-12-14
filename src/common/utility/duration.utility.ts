@@ -8,6 +8,8 @@ export function secondsToDuration(totalSeconds: number): string {
 }
 
 export function durationToSeconds(duration: string): number {
-    const [hours, minutes, seconds] = duration.split(':').map(Number);
+    const [hours, minutes, seconds] = duration
+        .split(':')
+        .map((val) => parseInt(val));
     return hours * 3600 + minutes * 60 + seconds;
 }

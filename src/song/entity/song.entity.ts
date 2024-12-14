@@ -1,9 +1,6 @@
 import { Transform } from 'class-transformer';
 import { IsOptional } from 'class-validator';
-import {
-    durationToSeconds,
-    secondsToDuration,
-} from 'src/common/utility/duration.utility';
+import { secondsToDuration } from 'src/common/utility/duration.utility';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 @Entity('song')
 export class Song {
@@ -18,23 +15,21 @@ export class Song {
 
     @Column({ type: 'time' })
     @Transform(
-        ({ value }) =>
-            typeof value === 'number'
-                ? secondsToDuration(value)
-                : durationToSeconds(value),
+        ({ value }) => {
+            return secondsToDuration(value);
+        },
         { toClassOnly: true, toPlainOnly: true },
     )
     duration: string;
 
     @Column({ type: 'text' })
-    @IsOptional()
+    @IsOptional() //TODO remove optional
     lyrics: string;
 
     @Column({ type: 'date' })
-    @IsOptional()
     releaseDate: Date;
 
     @Column({ type: 'text' })
-    @IsOptional()
+    @IsOptional() //TODO remove optional
     file_path: string;
 }

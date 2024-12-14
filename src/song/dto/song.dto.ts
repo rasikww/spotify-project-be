@@ -1,3 +1,4 @@
+import { Transform } from 'class-transformer';
 import {
     IsArray,
     IsDateString,
@@ -6,6 +7,7 @@ import {
     IsString,
     Min,
 } from 'class-validator';
+import { durationToSeconds } from 'src/common/utility/duration.utility';
 
 export class SongDTO {
     @IsString()
@@ -24,5 +26,16 @@ export class SongDTO {
     @IsNotEmpty()
     @IsInt()
     @Min(0)
-    readonly duration: number;
+    @Transform(
+        ({ value }) => {
+            if (typeof value === 'string') {
+                return durationToSeconds(value);
+            }
+            if (typeof value === 'number') {
+                return value;
+            }
+        },
+        { toClassOnly: true, toPlainOnly: true },
+    )
+    readonly duration: string;
 }
